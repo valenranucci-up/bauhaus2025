@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/bauhaus2025/css/index.css">
+  <link rel="stylesheet" href="/bauhaus2025/css/galeria.css">
+</head>
+<body>
+  <header class="top">
+    <h1><a class="logo" href="/bauhaus2025/">BAUHAUS</a></h1>
+    <nav>
+      <a href="/bauhaus2025/subpaginas/arquitectura.html">Arquitectura</a>
+      <a href="/bauhaus2025/subpaginas/industrial.php">Industrial</a>
+      <a href="/bauhaus2025/subpaginas/mobiliario.html">Mobiliario</a>
+      <a href="/bauhaus2025/subpaginas/galeria.html">Galería</a>
+      <a href="/bauhaus2025/subpaginas/inicio_de_sesion.php">Inicio de sesión</a>
+    </nav>
+  </header>
+
+  <main id="galeria">
+    <div class="galeria">
+      <div class="slides">
+        <div class="slide"><img src="../imagenes/galeria 1.jpg" alt="Imagen 1"></div>
+        <div class="slide"><img src="../imagenes/galeria 2.jpg" alt="Imagen 2"></div>
+        <div class="slide"><img src="../imagenes/galeria 3.jpg" alt="Imagen 3"></div>
+        <div class="slide"><img src="../imagenes/galeria 4.jpg" alt="Imagen 4"></div>
+        <div class="slide"><img src="../imagenes/galeria 5.jpg" alt="Imagen 5"></div>
+        <div class="slide"><img src="../imagenes/galeria 6.jpg" alt="Imagen 6"></div>
+        <div class="slide"><img src="../imagenes/galeria 7.jpg" alt="Imagen 7"></div>
+        <div class="slide"><img src="../imagenes/galeria 8.jpg" alt="Imagen 8"></div>
+        <div class="slide"><img src="../imagenes/galeria 9.jpg" alt="Imagen 9"></div>
+        <div class="slide"><img src="../imagenes/galeria 10.jpg" alt="Imagen 10"></div>
+        <div class="slide"><img src="../imagenes/galeria 11.jpg" alt="Imagen 11"></div>
+      </div>
+
+      <button class="flecha left" onclick="cambiarSlide(-1)">&#10094;</button>
+      <button class="flecha right" onclick="cambiarSlide(1)">&#10095;</button>
+    </div>
+  </main>
+
+  <!-- Footer unificado -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>Contacto: <a href="mailto:info@bauhaus.com">info@bauhaus.com</a> | Teléfono: +54 123456789</p>
+      <p>Dirección: Calle de la Creatividad, 123, Weimar, Alemania</p>
+
+      <div class="social-media">
+        <a href="https://www.instagram.com/bauhausdesign_studio/" target="_blank" rel="noopener">
+          <img src="/bauhaus2025/logos/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/bauhausthebandofficial/" target="_blank" rel="noopener">
+          <img src="/bauhaus2025/logos/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://twitter.com/bauhausmovement" target="_blank" rel="noopener">
+          <img src="/bauhaus2025/logos/twitter.png" alt="Twitter/X">
+        </a>
+      </div>
+
+      <p>&copy; 2024 Bauhaus Diseño.</p>
+    </div>
+  </footer>
+
+  <!-- Script del slider -->
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const totalSlides = slides.length;
+
+    function mostrarSlide(n) {
+      slideIndex = (n + totalSlides) % totalSlides;
+      slides.forEach((slide) => {
+        slide.style.transform = `translateX(-${slideIndex * 100}%)`;
+      });
+    }
+
+    function cambiarSlide(n) {
+      mostrarSlide(slideIndex + n);
+    }
+
+    setInterval(() => { mostrarSlide(slideIndex + 1); }, 3000);
+    mostrarSlide(slideIndex);
+  </script>
+</body>
+</html>

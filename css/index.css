@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color:  #b2a8a8;
+}
+
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'Jost', Arial, sans-serif; /* ← SOLO cambié esto */
+    font-size: 3em;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+}
+
+main {
+    padding: 40px 20px;
+    margin-bottom: 10px; 
+}
+
+.contenido {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.imagen-principal {
+    flex: 1 1 40%;
+    padding: 10px;
+}
+
+.imagen-principal img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.texto-informativo {
+    flex: 1 1 60%;
+    padding: 10px 20px;
+}
+
+.texto-informativo h2 {
+    color: #e63946;
+    margin-bottom: 15px;
+}
+
+.texto-informativo p {
+    font-size: 1.1em;
+    text-align: justify;
+}
+
+
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    position: static; 
+    margin-top: 10px; 
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+.footer-content .social-media a img {
+    width: 40px;   
+    height: 40px; 
+    object-fit: contain; 
+    margin: 0 10px; 
+}
+@media (max-width: 768px) {
+    .contenido {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+@media (max-width: 768px) {
+    .contenido-invertido {
+        flex-direction: column;
+    }
+}
+.contenido-invertido {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: row-reverse; 
+}
+
+.contenido-invertido .imagen-principal {
+    flex: 1 1 40%;
+    padding: 10px;
+}
+
+.contenido-invertido .imagen-principal img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 8px; 
+}
+
+.contenido-invertido .texto-informativo {
+    flex: 1 1 60%;
+    padding: 10px 20px;
+}
+* Estilo consistente para links del header/nav */
+.top .logo { color:#fff; text-decoration:none; }
+
+.top nav a,
+.top nav a:visited {
+  color:#fff;
+  text-decoration: none;
+}
+
+.top nav a:hover,
+.top nav a:focus {
+  text-decoration: none; 
+}
+.top nav{
+  display: flex;          
+  align-items: center;
+  gap: 80px;              
+  flex-wrap: wrap;        
+}
+
+.top nav a{
+  padding: 6px 2px;
+}
+@media (max-width: 768px){
+  .top nav{ gap: 12px; }  
+}
+.top{
+  display: flex;
+  flex-direction: column;   
+  align-items: center;    
+}
+.top h1{ margin: 0; }
+header.top{
+  padding: 16px 0 !important; 
+}
+header.top h1{
+  margin: 0 !important;
+  line-height: 1;
+}
+header.top nav{
+  margin-top: 8px !important; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;                      
+  width: 100%;
+}
+
+footer.site-footer{
+  padding: 16px 0 !important;
+  text-align: center;
+}
+footer.site-footer p{
+  margin: 0 !important;
+}
+
+main .content h1, 
+main .content h2{
+  margin-top: 0;
+}
+
+header.top{
+  padding:16px 0 !important;
+}
+header.top h1{ margin:0 !important; line-height:1; }
+
+header.top nav,
+header.top nav ul{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+  width:100%;
+}
+header.top nav ul{ list-style:none; margin:0; padding:0; }
+header.top nav li{ margin:0; }
+header.top nav a,
+header.top nav a:visited{
+  color:#fff;
+  text-decoration:none;
+  padding:6px 4px;
+}
+header.top nav a:hover{ text-decoration:underline; }
+
+footer.site-footer,
+footer{
+  padding:16px 0 !important;
+  text-align:center;
+}
+footer.site-footer p,
+footer p{ margin:0 !important; }
+
+.form-inline{
+  display:flex; justify-content:center; align-items:center;
+  gap:10px; flex-wrap:wrap; margin: 12px 0 20px;
+}
+.input{
+  padding:10px 12px; min-width:260px; border:1px solid #ddd; border-radius:8px;
+  background:#fff; color:#111; outline:none; transition: box-shadow .2s, border-color .2s;
+}
+.input:focus{ border-color:#111; box-shadow:0 0 0 3px rgba(0,0,0,.08); }
+
+.btn{
+  appearance:none; border:0; cursor:pointer; border-radius:999px; padding:10px 16px;
+  font-weight:600; letter-spacing:.2px; transition: transform .06s ease, background-color .2s ease, color .2s ease, box-shadow .2s;
+}
+.btn:active{ transform: translateY(1px); }
+
+.btn--primary{ background:#111; color:#fff; box-shadow:0 2px 0 rgba(0,0,0,.25); }
+.btn--primary:hover{ background:#222; }
+.btn--ghost{ background:transparent; color:#111; border:1px solid #111; }
+.btn--ghost:hover{ background:#111; color:#fff; }
+
+.muted{ color:#777; font-size:.95em; text-align:center; margin: 6px 0 12px; }
+
+.influencer-container{ gap:24px; }
+.influencer-card{ border-radius:12px; }
+
+.top .logo,
+.top .logo:visited{
+  color:#fff;
+  text-decoration:none;
+}
+
+.top .logo:hover,
+.top .logo:focus{
+  color:#fff;   
+  text-decoration:none;  
+  opacity:.9;            
+}
+.top .logo,
+.top .logo:visited{
+  font-family: Jost;
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: .06em;     
+  text-transform: uppercase; 
+  line-height: 1;
+}
+
+.top .logo:hover,
+.top .logo:focus{
+  color:#fff;
+  text-decoration:none;
+  opacity:.9;
+}
+:root{
+  --font-body: "Montserrat", "Segoe UI", Arial, sans-serif; 
+}
+html, body{
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Forzar Montserrat en todo el sitio (salvo el logo) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root{ --font-body: "Montserrat", "Segoe UI", Arial, sans-serif; }
+
+html, body{
+  font-family: var(--font-body) !important; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Centrar el buscador de la sección Industrial */
+#industrial .form-inline{
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 16px auto 24px;  
+}
+
+#industrial .form-inline .input{
+  min-width: 280px;
+}
+/* Fondo full-screen solo en la página de inicio */
+.home{
+  /* Cambiá el nombre del archivo abajo cuando lo subas */
+  --home-bg: url('/bauhaus2025/imagenes/bg-home.jpg');
+  min-height: 100svh;                          /* ocupa toda la pantalla */
+  background: var(--home-bg) center / cover no-repeat fixed;
+}
+
+/* Overlay suave para mejorar contraste (ajustá la opacidad a gusto) */
+.home::before{
+  content:"";
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.18);  
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home .top, .home main, .home .site-footer{
+  position: relative; z-index: 1;
+}
+
+@media (max-width: 768px){
+  .home{ background-attachment: scroll; }
+}
+header.top nav a,
+header.top nav a:visited{
+  color: #dddddd !important;          /* gris como en el inicio */
+  text-decoration: none !important;    /* nunca subrayado */
+  padding: 5px 10px;                   /* mantiene el “recuadro” */
+  border-radius: 5px;
+  transition: background-color .25s, color .25s;
+}
+
+header.top nav a:hover,
+header.top nav a:focus{
+  background-color: #ffffff !important;/* recuadro blanco */
+  color: #000000 !important;           /* texto negro al pasar */
+  text-decoration: none !important;    /* sin subrayado */
+}
+.home .hero-intro{ min-height:24vh; margin-bottom:8px; padding-bottom:8px; }
+.home .hero-intro h2{ margin-bottom:6px; }
+.home .hero-intro p{ margin:0; }
+.home main .contenido{ margin-top:12px; }
+/* ===== Footer unificado (claro) ===== */
+.site-footer{
+  background:#000000;
+  color:#ffffff;
+  border-top:1px solid #000000;
+  padding:20px 0;
+}
+.site-footer .footer-content{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+  display:grid;
+  gap:8px;
+}
+.site-footer p{ margin:0; font-size:.95em; text-align:center; }
+
+.site-footer a,
+.site-footer a:visited{
+  color:#807474;
+  text-decoration:none;
+}
+.site-footer a:hover{ text-decoration:underline; }
+
+/* Logos sociales */
+.site-footer .social-media{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+}
+.site-footer .social-media img{
+  width:28px; height:28px; display:block;
+}
+/* Solo la sección Galería */
+#galeria{
+  background-color: #c5c4c4;  /* ← tu color */
+  padding: 32px 20px;         /* un poco de aire para que se vea prolijo */
+}
+
+/* Si usás .contenido adentro y querés que se vea el color de fondo alrededor */
+#galeria .contenido{
+  margin: 0 auto;
+  /* dejalo blanco o hacelo translúcido si querés que el fondo se note */
+  /* background: rgba(255,255,255,.92); */
+}
+/* Quitar la línea superior del footer */
+.site-footer{ border-top: 0 !important; }
+#galeria, main{ border-bottom: 0 !important; }
+.site-footer{ margin-top: 0; }
