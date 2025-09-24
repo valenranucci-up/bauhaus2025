@@ -1,62 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bauhaus — Demo estática</title>
-  <!-- RUTAS RELATIVAS (importante en Pages) -->
-  <link rel="stylesheet" href="css/index.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bauhaus</title>
+  <!-- Usá SIEMPRE minúsculas en el path del repo -->
+  <link rel="stylesheet" href="/bauhaus2025/css/index.css">
 </head>
 <body class="home">
+
   <header class="top">
-    <h1><a class="logo" href="#">BAUHAUS</a></h1>
+    <h1><a class="logo" href="/bauhaus2025/">BAUHAUS</a></h1>
     <nav>
-      <a href="arquitectura.html">Arquitectura</a>
-      <a href="#">Industrial (solo demo)</a>
-      <a href="mobiliario.html">Mobiliario</a>
-      <a href="galeria.html">Galería</a>
-      <a href="#">Inicio de sesión (solo local)</a>
+      <a href="/bauhaus2025/subpaginas/arquitectura.html">Arquitectura</a>
+      <!-- “Industrial” y “Inicio de sesión” usan PHP. En Pages (estático)
+           los dejo desactivados para no romper. Si querés, creá versiones HTML. -->
+      <a href="#" title="Disponible solo en la versión local (PHP)">Industrial</a>
+      <a href="/bauhaus2025/subpaginas/mobiliario.html">Mobiliario</a>
+      <a href="/bauhaus2025/subpaginas/galeria.html">Galería</a>
+      <a href="#" title="Disponible solo en la versión local (PHP)">Inicio de sesión</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero-intro" style="min-height:24vh; display:grid; place-items:center; text-align:center; color:#fff; margin-bottom:8px;">
-      <div style="max-width:860px; padding:4px;">
-        <h2 style="font-size:clamp(28px,6vw,56px); margin:0 0 6px;">Forma y función en equilibrio</h2>
-        <p style="font-size:clamp(16px,2.4vw,20px); opacity:.95; margin:0;">
-          Demo en GitHub Pages. La versión completa con PHP/MySQL corre en XAMPP (localhost).
-        </p>
-      </div>
-    </section>
-
+    <!-- Bloque 1 -->
     <div class="contenido">
       <div class="imagen-principal">
-        <img src="imagenes/img inicio.png" alt="Bauhaus">
+        <img src="/bauhaus2025/imagenes/img inicio.png" alt="Imagen Principal de Bauhaus">
       </div>
       <div class="texto-informativo">
         <h2>Bienvenidxs a la Escuela de Diseño Bauhaus</h2>
-        <p>Esta es la versión estática para presentación. Las funciones dinámicas (registro, login, búsqueda) están en la versión local con PHP/MySQL.</p>
+        <p>
+          La Bauhaus, fundada en 1919 en Weimar, Alemania, por el arquitecto Walter Gropius, fue una escuela de arte y diseño que marcó un antes y un después en la historia del diseño y la arquitectura. Su objetivo era unir el arte, la artesanía y la tecnología para crear objetos funcionales y estéticamente innovadores, accesibles para todos.
+        </p>
+        <p>
+          Durante su existencia, de 1919 a 1933, la Bauhaus se trasladó a Dessau y luego a Berlín, enfrentando desafíos políticos y sociales hasta su cierre forzoso por el régimen nazi. A pesar de su corta duración, dejó un legado inmenso: su enfoque interdisciplinario, el énfasis en la funcionalidad y su estética minimalista influyeron profundamente en el diseño moderno.
+        </p>
+        <p>
+          Te invitamos a explorar cómo la Bauhaus transformó el arte, la arquitectura y el diseño, y a descubrir el impacto duradero de esta escuela revolucionaria en el mundo contemporáneo.
+        </p>
       </div>
     </div>
+
+    <!-- Bloque 2 invertido -->
+    <div class="contenido-invertido">
+      <div class="texto-informativo">
+        <h2>El Legado de la Bauhaus</h2>
+        <p>
+          La Bauhaus no solo fue una escuela; se convirtió en un movimiento cultural que desafió las normas establecidas y fomentó un nuevo enfoque hacia el diseño. Defendía que la funcionalidad y la estética podían coexistir, y unió disciplinas como el arte, la arquitectura y la tecnología a través de talleres prácticos y colaboración entre artesanos, artistas e ingenieros.
+        </p>
+        <p>
+          Sus principios —equilibrio entre forma y función, claridad en el diseño y conexión con la vida cotidiana— siguen vigentes. La huella de la Bauhaus se percibe en productos, espacios y procesos educativos de todo el mundo.
+        </p>
+      </div>
+      <div class="imagen-principal">
+        <img src="/bauhaus2025/imagenes/img inicio 2.jpg" alt="Imagen del legado de Bauhaus">
+      </div>
+    </div>
+
+    <!-- Mini héroe (opcional) -->
+    <section class="hero-intro" style="min-height:28vh;display:grid;place-items:center;text-align:center;color:#fff;margin:8px 0 0;">
+      <div style="max-width:860px;padding:4px;">
+        <h2 style="font-size:clamp(28px,6vw,56px);margin:0 0 8px;">Forma y función en equilibrio</h2>
+        <p style="font-size:clamp(16px,2.4vw,20px);opacity:.95;">
+          La Bauhaus como síntesis entre arte, diseño y tecnología.
+        </p>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-content">
-      <p>Contacto: <a href="mailto:info@bauhaus.com">info@bauhaus.com</a> | Teléfono: +54 123456789</p>
-      <p>Dirección: Calle de la Creatividad, 123, Weimar, Alemania</p>
+      <div class="contact-info">
+        <p>Contacto: <a href="mailto:info@bauhaus.com">info@bauhaus.com</a> | Teléfono: +54 123456789</p>
+        <p>Dirección: Calle de la Creatividad, 123, Weimar, Alemania</p>
+      </div>
       <div class="social-media">
         <a href="https://www.instagram.com/bauhausdesign_studio/" target="_blank" rel="noopener">
-          <img src="logos/instagram.png" alt="Instagram">
+          <img src="/bauhaus2025/logos/instagram.png" alt="Instagram">
         </a>
         <a href="https://www.facebook.com/bauhausthebandofficial/" target="_blank" rel="noopener">
-          <img src="logos/facebook.png" alt="Facebook">
+          <img src="/bauhaus2025/logos/facebook.png" alt="Facebook">
         </a>
         <a href="https://twitter.com/bauhausmovement" target="_blank" rel="noopener">
-          <img src="logos/twitter.png" alt="Twitter/X">
+          <img src="/bauhaus2025/logos/twitter.png" alt="Twitter/X">
         </a>
       </div>
       <p>&copy; 2024 Bauhaus Diseño.</p>
     </div>
   </footer>
+
 </body>
 </html>
+
