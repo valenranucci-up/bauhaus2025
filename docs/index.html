@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bauhaus — Demo estática</title>
+  <!-- RUTAS RELATIVAS (importante en Pages) -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="home">
+  <header class="top">
+    <h1><a class="logo" href="#">BAUHAUS</a></h1>
+    <nav>
+      <a href="arquitectura.html">Arquitectura</a>
+      <a href="#">Industrial (solo demo)</a>
+      <a href="mobiliario.html">Mobiliario</a>
+      <a href="galeria.html">Galería</a>
+      <a href="#">Inicio de sesión (solo local)</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-intro" style="min-height:24vh; display:grid; place-items:center; text-align:center; color:#fff; margin-bottom:8px;">
+      <div style="max-width:860px; padding:4px;">
+        <h2 style="font-size:clamp(28px,6vw,56px); margin:0 0 6px;">Forma y función en equilibrio</h2>
+        <p style="font-size:clamp(16px,2.4vw,20px); opacity:.95; margin:0;">
+          Demo en GitHub Pages. La versión completa con PHP/MySQL corre en XAMPP (localhost).
+        </p>
+      </div>
+    </section>
+
+    <div class="contenido">
+      <div class="imagen-principal">
+        <img src="imagenes/img inicio.png" alt="Bauhaus">
+      </div>
+      <div class="texto-informativo">
+        <h2>Bienvenidxs a la Escuela de Diseño Bauhaus</h2>
+        <p>Esta es la versión estática para presentación. Las funciones dinámicas (registro, login, búsqueda) están en la versión local con PHP/MySQL.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>Contacto: <a href="mailto:info@bauhaus.com">info@bauhaus.com</a> | Teléfono: +54 123456789</p>
+      <p>Dirección: Calle de la Creatividad, 123, Weimar, Alemania</p>
+      <div class="social-media">
+        <a href="https://www.instagram.com/bauhausdesign_studio/" target="_blank" rel="noopener">
+          <img src="logos/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/bauhausthebandofficial/" target="_blank" rel="noopener">
+          <img src="logos/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://twitter.com/bauhausmovement" target="_blank" rel="noopener">
+          <img src="logos/twitter.png" alt="Twitter/X">
+        </a>
+      </div>
+      <p>&copy; 2024 Bauhaus Diseño.</p>
+    </div>
+  </footer>
+</body>
+</html>
