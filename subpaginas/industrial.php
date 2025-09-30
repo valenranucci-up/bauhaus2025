@@ -47,21 +47,22 @@ try {
 
 // Productos (estáticos)
 $productos = [
-  [
-    'nombre'=>'Set de Mesa',
-    'img'=>'/bauhaus2025/imagenes/set de mesa.jpg',
-    'desc'=>'Inventado por Marianne Brandt, se caracteriza por su diseño minimalista y el uso de materiales como el metal y el vidrio.'
+ [
+    'nombre'=>'Silla Cesca - Marcel Breuer',
+    'img'=>'/bauhaus2025/imagenes/silla-cesca.jpg',
+    'desc'=>'La silla Cesca es un clásico del mobiliario Bauhaus. Su estructura de acero tubular combinada con asiento y respaldo de caña tejida logra ligereza, resistencia y confort. Su diseño cantilever, sin patas traseras, marcó una innovación en el mobiliario moderno y la convirtió en un referente atemporal del diseño industrial.'
   ],
   [
-    'nombre'=>'Lámpara Wagenfeld',
-    'img'=>'/bauhaus2025/imagenes/lampara wagenfeld.jpg',
-    'desc'=>'Diseñada por Wilhelm Wagenfeld, con un lenguaje simple y elegante, utilizando vidrio y metal.'
+    'nombre'=>'Set de Mesa - Marianne Brandt',
+    'img'=>'/bauhaus2025/imagenes/set-de-mesa.jpg',
+    'desc'=>'El set de mesa refleja la esencia de la Bauhaus. Con formas geométricas y un diseño pensado para la vida cotidiana, destaca por su simplicidad y utilidad práctica. Transformó utensilios comunes en piezas de diseño moderno, demostrando que la unión entre arte, técnica y funcionalidad podía dar lugar a objetos innovadores y atemporales.'
   ],
   [
-    'nombre'=>'Silla Cesca',
-    'img'=>'/bauhaus2025/imagenes/silla cesca.jpg',
-    'desc'=>'Creada por Marcel Breuer en 1928: acero tubular con asiento de mimbre o tapizado; confort y estética moderna.'
+    'nombre'=>'Lámpara WG24 - Wagenfeld',
+    'img'=>'/bauhaus2025/imagenes/lampara-wagenfeld.jpg',
+    'desc'=>'La lámpara WG24 es uno de los íconos más reconocidos de la Bauhaus. Con una estructura de vidrio y metal, une estética y funcionalidad en un diseño de líneas simples y geométricas. Representa la idea de que los objetos cotidianos pueden ser bellos y prácticos, y sigue vigente como símbolo del diseño moderno.'
   ],
+  
 ];
 $productos_filtrados = $productos;
 if ($search !== '' && mb_strlen($search,'UTF-8') >= $minlen) {
@@ -77,8 +78,57 @@ if ($search !== '' && mb_strlen($search,'UTF-8') >= $minlen) {
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Industrial</title>
-  <link rel="stylesheet" href="/bauhaus2025/css/index.css">
-  <link rel="stylesheet" href="/bauhaus2025/css/arqui.ind.mob.css">
+  <link rel="stylesheet" href="/bauhaus2025/css/index.css?v=31">
+<link rel="stylesheet" href="/bauhaus2025/css/arqui.ind.mob.css?v=31">
+
+<!-- OVERRIDES para que NO se corte el texto en Industrial -->
+<style>
+  /* El contenedor de tarjetas NO trata de igualar alturas */
+  #industrial .influencer-container{
+    align-items: start !important;
+    grid-auto-rows: auto !important;
+  }
+
+  /* La tarjeta crece en alto según su contenido */
+  #industrial .influencer-card{
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Imagen más baja para liberar espacio al texto (ajustá 160–200px si querés) */
+  #industrial .influencer-card img{
+    width: 100% !important;
+    max-height: 180px !important;
+    height: auto !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+    margin-bottom: 10px !important;
+    flex: 0 0 auto !important;
+  }
+
+  #industrial .influencer-card h3{ margin: 8px 0 !important; }
+
+  /* Párrafo SIN truncado de ningún tipo */
+  #industrial .influencer-card p{
+    margin: 0 !important;
+    line-height: 1.5 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    max-height: none !important;
+    height: auto !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    word-break: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+</style>
+
 </head>
 <body>
 

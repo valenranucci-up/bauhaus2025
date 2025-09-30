@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Galería</title>
 
-  <!-- Estilos -->
+  <!-- Mantener index.css primero y luego galeria.css (rompemos caché con v=7) -->
   <link rel="stylesheet" href="/bauhaus2025/css/index.css">
-  <link rel="stylesheet" href="/bauhaus2025/css/galeria.css">
+  <link rel="stylesheet" href="/bauhaus2025/css/galeria.css?v=7">
 </head>
-<body>
+
+<!-- OJO: un solo <body>. La clase activa el estilo específico de esta página -->
+<body class="gallery-page">
+
   <header class="top">
     <h1><a class="logo" href="/bauhaus2025/">BAUHAUS</a></h1>
     <nav>
@@ -22,27 +25,25 @@
   </header>
 
   <main id="galeria">
-    <div class="galeria">
-      <div class="slides">
-        <div class="slide"><img src="../imagenes/galeria 1.jpg" alt="Imagen 1"></div>
-        <div class="slide"><img src="../imagenes/galeria 2.jpg" alt="Imagen 2"></div>
-        <div class="slide"><img src="../imagenes/galeria 3.jpg" alt="Imagen 3"></div>
-        <div class="slide"><img src="../imagenes/galeria 4.jpg" alt="Imagen 4"></div>
-        <div class="slide"><img src="../imagenes/galeria 5.jpg" alt="Imagen 5"></div>
-        <div class="slide"><img src="../imagenes/galeria 6.jpg" alt="Imagen 6"></div>
-        <div class="slide"><img src="../imagenes/galeria 7.jpg" alt="Imagen 7"></div>
-        <div class="slide"><img src="../imagenes/galeria 8.jpg" alt="Imagen 8"></div>
-        <div class="slide"><img src="../imagenes/galeria 9.jpg" alt="Imagen 9"></div>
-        <div class="slide"><img src="../imagenes/galeria 10.jpg" alt="Imagen 10"></div>
-        <div class="slide"><img src="../imagenes/galeria 11.jpg" alt="Imagen 11"></div>
+    <div class="gallery-shell" aria-label="Galería de imágenes">
+      <button class="flecha left" aria-label="Anterior" data-dir="-1">&#10094;</button>
+
+      <div class="slides" id="slides">
+        <!-- Cambiá las rutas a tus imágenes reales.
+             Acá usé nombres con guiones, pero si los tuyos tienen espacios, ponelos tal cual -->
+        <div class="slide" style="background-image:url('../imagenes/galeria-1.jpg')"></div>
+        <div class="slide" style="background-image:url('../imagenes/galeria-2.jpg')"></div>
+        <div class="slide" style="background-image:url('../imagenes/galeria-3.jpg')"></div>
+        <div class="slide" style="background-image:url('../imagenes/galeria-4.jpg')"></div>
+        <div class="slide" style="background-image:url('../imagenes/galeria-5.jpg')"></div>
+        <div class="slide" style="background-image:url('../imagenes/galeria-6.jpg')"></div>
+        <div class="slide" style="background-image:url('../imagenes/galeria-7.jpg')"></div>
       </div>
 
-      <button class="flecha left" onclick="cambiarSlide(-1)">&#10094;</button>
-      <button class="flecha right" onclick="cambiarSlide(1)">&#10095;</button>
+      <button class="flecha right" aria-label="Siguiente" data-dir="1">&#10095;</button>
     </div>
   </main>
 
-  <!-- Footer unificado -->
   <footer class="site-footer">
     <div class="footer-content">
       <p>Contacto: <a href="mailto:info@bauhaus.com">info@bauhaus.com</a> | Teléfono: +54 123456789</p>
@@ -64,25 +65,42 @@
     </div>
   </footer>
 
-  <!-- Script del slider -->
   <script>
-    let slideIndex = 0;
-    const slides = document.querySelectorAll(".slide");
-    const totalSlides = slides.length;
+  (function(){
+    const shell  = document.querySelector('.gallery-shell');
+    const track  = document.querySelector('.slides');
+    const slides = document.querySelectorAll('.slide');
+    if (!shell || !track || !slides.length) return;
 
-    function mostrarSlide(n) {
-      slideIndex = (n + totalSlides) % totalSlides;
-      slides.forEach((slide) => {
-        slide.style.transform = `translateX(-${slideIndex * 100}%)`;
-      });
-    }
+    let i = 0;
+    let timer = null;
+    const delay = 3000; // autoplay (ms). Ajustá a gusto.
 
-    function cambiarSlide(n) {
-      mostrarSlide(slideIndex + n);
-    }
+    function render(){ track.style.transform = `translateX(-${i * 100}%)`; }
+    function go(n){ i = (n + slides.length) % slides.length; render(); reset(); }
+    function next(){ go(i + 1); }
+    function prev(){ go(i - 1); }
 
-    setInterval(() => { mostrarSlide(slideIndex + 1); }, 3000);
-    mostrarSlide(slideIndex);
+    // Botones
+    shell.addEventListener('click', (e) => {
+      const btn = e.target.closest('.flecha');
+      if (!btn) return;
+      const dir = parseInt(btn.getAttribute('data-dir'), 10);
+      if (dir === 1) next(); else prev();
+    });
+
+    // Autoplay con pausa al pasar el mouse y al cambiar de pestaña
+    function start(){ if (!timer) timer = setInterval(next, delay); }
+    function stop(){ clearInterval(timer); timer = null; }
+    function reset(){ stop(); start(); }
+    shell.addEventListener('mouseenter', stop);
+    shell.addEventListener('mouseleave', start);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+    render();
+    start();
+  })();
   </script>
+
 </body>
 </html>

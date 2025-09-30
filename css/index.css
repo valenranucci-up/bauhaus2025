@@ -427,3 +427,47 @@ header.top nav a:focus{
 .site-footer{ border-top: 0 !important; }
 #galeria, main{ border-bottom: 0 !important; }
 .site-footer{ margin-top: 0; }
+/* ===== Forzar que NO se recorte el texto en Industrial ===== */
+#industrial .influencer-container{
+  grid-auto-rows: auto !important;
+  align-items: stretch !important;
+}
+
+#industrial .influencer-container .influencer-card{
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+#industrial .influencer-container .influencer-card img{
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  max-height: 180px !important;   /* podés subirlo/bajarlo si querés */
+  height: auto !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  margin-bottom: 10px !important;
+}
+
+#industrial .influencer-container .influencer-card h3{
+  flex: 0 0 auto !important;
+  margin: 8px 0 !important;
+}
+
+#industrial .influencer-container .influencer-card p{
+  flex: 1 1 auto !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+
+  /* anula cualquier truncado/clamp previo */
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-height: none !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+}

@@ -1,12 +1,16 @@
-
+/* ===== Reset y variables ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root{
-  --space: 20px;          
-  --gap: 24px;            
-  --maxw: 1200px;         
-  --card-radius: 8px;
-  --shadow: 0 0 10px rgba(0,0,0,.1);
+  --space: 20px;              /* padding base */
+  --gap: 20px;                /* separación entre elementos */
+  --maxw: 1200px;             /* ancho máximo de contenedores */
+  --card-radius: 12px;        /* radio de borde de tarjetas */
+  --shadow: 0 2px 10px rgba(0,0,0,.06);
+
+  /* Ancho unificado para TODAS las tarjetas (Obras + Influyentes) */
+  --card-min: 240px;
+  --card-max: 300px;
 }
 
 body{
@@ -16,9 +20,9 @@ body{
   background: #000;
 }
 
-
+/* ===== Layout general de sección ===== */
 main{
-  padding: var(--space) var(--space);
+  padding: var(--space);
   margin-bottom: 10px;
 }
 
@@ -30,32 +34,23 @@ main{
   margin: 0 auto;
   background: #fff;
   padding: var(--space);
-  border-radius: var(--card-radius);
-  box-shadow: var(--shadow);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
 
 .imagen-principal{ flex: 1 1 40%; padding: 10px; }
-.imagen-principal img{ width: 100%; height: auto; border-radius: var(--card-radius); }
+.imagen-principal img{ width: 100%; height: auto; border-radius: 8px; }
 
 .texto-informativo{ flex: 1 1 60%; padding: 10px 20px; }
 .texto-informativo h2{ color: #e63946; margin-bottom: 15px; }
 .texto-informativo p{ font-size: 1.1em; text-align: justify; }
-#arquitectura,
-#industrial,
-#mobiliario{
-  padding: var(--space) var(--space); 
-}
+
+/* ===== Fondos por sección ===== */
+#arquitectura, #industrial, #mobiliario{ padding: var(--space); }
 
 #arquitectura{ background: #1d6199; }
 #arquitectura h2{ color: #070707; }
 #arquitectura p{  color: #070707; }
-#arquitectura .imagen-seccion{
-  display: block;
-  margin: 20px auto;
-  max-width: 90%;
-  height: auto;
-  border: 2px solid #000;
-}
 
 #industrial{ background: #a92529; }
 #industrial h2{ color: #080808; }
@@ -65,56 +60,362 @@ main{
 #mobiliario h2{ color: #000; }
 #mobiliario p{  color: #0c0c0c; }
 
+/* ===================================================================== */
+/* ============ TARJETAS UNIFICADAS (OBRAS + INFLUYENTES) ============== */
+/* ===================================================================== */
+
+/* Encabezado de bloques de tarjetas */
+#arquitectura .obras,
 .influencers{
-  padding: var(--space) var(--space);
-  background: transparent;
+  padding: 28px 20px;
+  text-align: center;
 }
+#arquitectura .obras h2,
 .influencers h2{
-  text-align: center;
+  font-size: 2em;              /* igual tamaño en ambos bloques */
   color: #070707;
-  margin-bottom: 30px;
-  font-size: 2em;
-}
-.influencer-container{
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  max-width: var(--maxw);
-  margin: 0 auto;
-}
-.influencer-card{
-  background: #fcfafa;
-  border: 1px solid #050505;
-  border-radius: var(--card-radius);
-  width: 300px;
-  text-align: center;
-  padding: 20px;
-  box-shadow: var(--shadow);
-}
-.influencer-card img{
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 200px;
-  object-fit: contain;
-  border-radius: 4px;
-  margin-bottom: 15px;
-}
-.influencer-card h3{
-  color: hsla(0, 0%, 0%, 0.961);
-  margin-bottom: 10px;
-  font-size: 1.5em;
-}
-.influencer-card p{
-  color: #090909;
-  font-size: 1em;
-  text-align: justify;
+  margin-bottom: 18px;
 }
 
+/* Grids con mismo ancho de tarjetas en TODAS las secciones */
+.obras-grid,
+.influencer-container{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  gap: 18px 20px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-min), var(--card-max)));
+  justify-content: center;     /* centra el grid */
+}
+
+/* Tarjeta base (Obras + Influyentes) */
+.obra-card,
+.influencer-card{
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: var(--card-radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .2s ease;
+  text-align: center;
+  width: 100%;
+  max-width: var(--card-max);
+  margin: 0 auto;
+}
+.obra-card:hover,
+.influencer-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+
+/* Imagen con misma proporción y borde redondeado */
+.obra-media,
+.influencer-card img{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--card-radius);
+  margin: 0 auto 10px;
+}
+
+/* Contenedor de imagen de Obra (si se usa <div class="obra-media"><img>...) */
+.obra-media{ position: relative; overflow: hidden; }
+.obra-media img{ width: 100%; height: 100%; object-fit: cover; }
+
+/* “Pill” del año en Obras */
+.obra-year{
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+  font-size: .8rem;
+  padding: 5px 8px;
+  border-radius: 999px;
+}
+
+/* Textos de tarjetas */
+.obra-title,
+.influencer-card h3{
+  margin: 6px 0 6px;
+  font-size: 1.05rem;
+  color: #111;
+}
+.obra-desc,
+.influencer-card p{
+  margin: 0;
+  font-size: .95rem;
+  color: #111;
+  text-align: center;
+}
+
+/* ===== Footer simple de secciones ===== */
 .site-footer{ padding: 16px 0; text-align: center; }
 .site-footer p{ margin: 0; font-size: .9em; }
 
+/* ===== Responsive base ===== */
 @media (max-width: 768px){
   .contenido{ flex-direction: column; }
+  #arquitectura .obras, .influencers{ padding: 24px 14px; }
+  .obras-grid, .influencer-container{ gap: 16px; }
 }
+
+/* ===================================================================== */
+/* ===================== Mobiliario: grid 3×2 ========================== */
+/* ===================================================================== */
+#mobiliario .productos-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-items: center;
+}
+#mobiliario .influencer-card{
+  width: 100%;
+  max-width: 320px;
+}
+#mobiliario .influencer-card img{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+@media (max-width: 1024px){
+  #mobiliario .productos-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px){
+  #mobiliario .productos-grid{ grid-template-columns: 1fr; }
+}
+
+/* ===================================================================== */
+/* ===== Arq + Industrial: mismo grid y spacing que Mobiliario ========= */
+/* ===================================================================== */
+#arquitectura .influencer-container,
+#industrial .influencer-container{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;                 /* mismo espacio entre casillas */
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-items: center;
+}
+#arquitectura .influencer-card,
+#industrial .influencer-card{
+  width: 100%;
+  max-width: 320px;
+}
+#arquitectura .influencer-card img,
+#industrial .influencer-card img{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+@media (max-width: 1024px){
+  #arquitectura .influencer-container,
+  #industrial .influencer-container{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px){
+  #arquitectura .influencer-container,
+  #industrial .influencer-container{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================================================================== */
+/* ======= Arquitectura: Obras destacadas (mismo layout 3×2) =========== */
+/* ===================================================================== */
+#arquitectura .obras-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-items: center;
+}
+#arquitectura .obra-card{
+  width: 100%;
+  max-width: 320px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 12px;
+  padding: 12px 12px 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  transition: transform .15s ease, box-shadow .2s ease;
+  text-align: center;
+}
+#arquitectura .obra-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+#arquitectura .obra-media{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+#arquitectura .obra-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#arquitectura .obra-title{
+  margin: 6px 0 6px;
+  font-size: 1.05rem;
+  color: #111;
+}
+#arquitectura .obra-desc{
+  margin: 0;
+  font-size: .95rem;
+  color: #111;
+  text-align: center;
+}
+@media (max-width: 1024px){
+  #arquitectura .obras-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px){
+  #arquitectura .obras-grid{ grid-template-columns: 1fr; }
+}
+
+/* ===================================================================== */
+/* ===== Fix Industrial: tarjetas altas, sin recortes de texto ========= */
+/* ===================================================================== */
+#industrial .influencer-container{
+  grid-auto-rows: auto;         /* filas crecen según contenido */
+  align-items: stretch;         /* tarjetas pueden estirarse */
+}
+
+#industrial .influencer-card{
+  display: flex;                /* apila imagen, h3, p */
+  flex-direction: column;
+  height: auto !important;
+  overflow: visible !important; /* nada de recortar */
+}
+
+/* Imagen un poco más baja para dar aire al texto */
+#industrial .influencer-card img{
+  width: 100%;
+  max-height: 180px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  flex: 0 0 auto;
+}
+
+#industrial .influencer-card h3{
+  margin: 6px 0;
+  flex: 0 0 auto;
+}
+
+/* Texto: sin truncado, envoltura normal, ocupa lo que necesite */
+#industrial .influencer-card p{
+  margin: 0;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-height: 1.5;
+  max-height: none !important;
+  overflow: visible !important;
+
+  /* Desactivar posibles clamps heredados de otros CSS */
+  display: block !important;
+  -webkit-line-clamp: initial !important;
+  -webkit-box-orient: initial !important;
+
+  flex: 1 1 auto;              /* permite crecer en alto */
+}
+/* ===== Forzar que NO se recorte el texto en Industrial ===== */
+#industrial .influencer-container{
+  grid-auto-rows: auto !important;
+  align-items: stretch !important;
+}
+
+#industrial .influencer-container .influencer-card{
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+#industrial .influencer-container .influencer-card img{
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  max-height: 180px !important;   /* podés subirlo/bajarlo si querés */
+  height: auto !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  margin-bottom: 10px !important;
+}
+
+#industrial .influencer-container .influencer-card h3{
+  flex: 0 0 auto !important;
+  margin: 8px 0 !important;
+}
+
+#industrial .influencer-container .influencer-card p{
+  flex: 1 1 auto !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+
+  /* anula cualquier truncado/clamp previo */
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-height: none !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+}
+/* ==== INDUSTRIAL: permitir texto largo en las tarjetas ==== */
+#industrial .influencer-container{
+  /* si ya definiste columnas/gap en otro lado, no pasa nada: esto solo ajusta la vertical */
+  align-items: start;            /* que no intente igualar alturas */
+  grid-auto-rows: auto;          /* filas con alto por contenido */
+}
+
+#industrial .influencer-card{
+  display: flex;                 /* vertical */
+  flex-direction: column;
+  height: auto !important;       /* nada de altura fija */
+  overflow: visible !important;  /* no recortar contenido */
+}
+
+#industrial .influencer-card img{
+  /* dejá un tope de imagen para darle más aire al texto */
+  width: 100%;
+  max-height: 180px;             /* podés subirlo/bajarlo */
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  flex: 0 0 auto;
+}
+
+#industrial .influencer-card h3{ margin: 8px 0; }
+
+#industrial .influencer-card p{
+  margin: 0;
+  line-height: 1.5;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-height: none !important;
+  display: block !important;
+  /* desactivar cualquier clamp heredado */
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+}
+

@@ -118,3 +118,89 @@ main{
 @media (max-width: 768px){
   .contenido{ flex-direction: column; }
 }
+/* ====== Obras destacadas (Arquitectura) — versión más compacta, centrada ====== */
+#arquitectura .obras{
+  padding: 28px 20px;
+  text-align: center;                /* todo centrado */
+}
+#arquitectura .obras h2{
+  /* mismo tamaño que “Principales Influyentes” */
+  font-size: 2em;
+  color: #070707;
+  margin-bottom: 18px;
+}
+
+/* Grid de tarjetas más chico: imágenes ~la mitad de antes */
+.obras-grid{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 18px 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 320px)); /* columnas estrechas */
+  justify-content: center;            /* centra el grid en el contenedor */
+}
+
+/* Tarjeta */
+.obra-card{
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 12px;
+  padding: 14px 14px 16px;            /* borde interior */
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  transition: transform .15s ease, box-shadow .2s ease;
+  text-align: center;                 /* centra textos de cada tarjeta */
+}
+.obra-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+
+/* Imagen más pequeña y redondeada */
+.obra-media{
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;                /* bordes redondeados en la imagen */
+  overflow: hidden;
+  margin: 0 auto 10px;                /* centrada + separación con el texto */
+}
+.obra-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Año (“pill”) */
+.obra-year{
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+  font-size: .8rem;
+  padding: 5px 8px;
+  border-radius: 999px;
+}
+
+/* Textos */
+.obra-body{ padding: 0 2px; }
+.obra-title{
+  margin: 6px 0 6px;
+  font-size: 1.05rem;
+  color: #111;
+}
+.obra-desc{
+  margin: 0;
+  font-size: .95rem;
+  color: #111;
+  text-align: center;                 /* descripción centrada */
+}
+
+/* Responsive fino */
+@media (max-width: 768px){
+  #arquitectura .obras{ padding: 24px 14px; }
+  .obras-grid{ gap: 16px; }
+}
+
